@@ -1,46 +1,7 @@
 import React, { useReducer } from 'react';
+import { initialState, reducer } from '../state/formReducer';
 
 const LongForm = () => {
-  const initialState = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    gender: '',
-    education: '',
-    quantity: 0,
-    feedback: '',
-    term: false,
-  };
-  const reducer = (state, action) => {
-    console.log(action);
-
-    switch (action.type) {
-      case 'INPUT':
-        return {
-          ...state, //because of immutability
-          [action.payload.name]: action.payload.value,
-        };
-      case 'TOGGLE':
-        return {
-          ...state, //because of immutability
-          term: !state.term,
-        };
-      case 'INCREMENT':
-        return {
-          ...state, //because of immutability
-          quantity: state.quantity + 1,
-        };
-      case 'DECREMENT':
-        return {
-          ...state, //because of immutability
-          quantity: state.quantity - 1,
-          // name: state.payload.name,
-        };
-      default:
-        return state;
-    }
-  };
-
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const submit = (e) => {
@@ -185,7 +146,7 @@ const LongForm = () => {
               onClick={() =>
                 dispatch({
                   type: 'DECREMENT',
-                  payload: { name: 'quantity', value: state.quantity - 1 },
+                  payload: { count: 1 },
                 })
               }
             >
@@ -199,7 +160,7 @@ const LongForm = () => {
               onClick={() =>
                 dispatch({
                   type: 'INCREMENT',
-                  // payload: { count: 1 },
+                  payload: { count: 1 },
                 })
               }
             >
