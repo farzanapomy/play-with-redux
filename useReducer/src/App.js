@@ -3,7 +3,7 @@ import LongForm from "./pages/LongForm";
 import ShortForm from "./pages/ShortForm";
 
 function App() {
-  return <Count />;
+  return <LongForm />;
 }
 
 export default App;
