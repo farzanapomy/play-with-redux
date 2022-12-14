@@ -1,8 +1,10 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
 import { useProducts } from '../context/ProductProvider';
+import { actionTypes } from '../state/ProductState/actionTypes';
 
 const Cart = () => {
+  const { dispatch } = useProducts();
   const {
     state: { cart, loading, error },
   } = useProducts();
@@ -23,7 +25,17 @@ const Cart = () => {
 
   if (!loading && !error && cart.length) {
     content = cart.map((product) => (
-      <ProductCard key={product._id} product={product} />
+      <div>
+        <ProductCard key={product.id} product={product} />
+        <button
+          className="bg-indigo-500 rounded-full py-1  ml-2 px-12 flex-1 text-white text-bold"
+          onClick={() =>
+            dispatch({ type: actionTypes.REMOVE_FROM_CART, payload: product })
+          }
+        >
+          Remove from list
+        </button>
+      </div>
     ));
   }
 

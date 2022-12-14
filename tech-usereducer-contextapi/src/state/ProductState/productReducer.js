@@ -38,8 +38,9 @@ export const productReducer = (state, action) => {
     case actionTypes.REMOVE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item._id !== action.payload),
-        //here will be removed from the cart the product with the id that is passed in the payload
+        cart: state.cart.filter((product) => product.id !== action.payload.id),
+
+        //here will be removed from the cart the product with the same id as the payload
       };
 
     default:
