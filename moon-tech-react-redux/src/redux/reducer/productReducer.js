@@ -27,6 +27,20 @@ const productReducer = (state = initialState, action) => {
       };
 
     case actionType.REMOVE_FROM_CART:
+      if (selectedProduct.quantity>1) {
+        const newCar = state.cart.filter(
+          (product) => product._id !== action.payload._id
+        );
+        selectedProduct.quantity -= 1;
+        return {
+          ...state,
+          cart: [...newCar, selectedProduct],
+        };
+      }
+      return {
+        ...state, //because we are not changing the state, we are just adding to it
+        cart: [...state.cart, { ...action.payload, quantity: 1 }], //payload is the product
+      };
       return {
         ...state,
         cart: state.cart.filter(
