@@ -12,7 +12,14 @@ const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.ADD_TO_CART:
       if (selectedProduct) {
-        return state;
+        const newCar = state.cart.filter(
+          (product) => product._id !== action.payload._id
+        );
+        selectedProduct.quantity += 1;
+        return {
+          ...state,
+          cart: [...newCar, selectedProduct],
+        };
       }
       return {
         ...state, //because we are not changing the state, we are just adding to it
