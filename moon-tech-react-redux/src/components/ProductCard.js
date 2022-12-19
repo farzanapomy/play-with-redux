@@ -5,7 +5,10 @@ import { useLocation } from 'react-router-dom';
 
 import { MdDeleteForever } from 'react-icons/md';
 import actionType from '../redux/reducer/actionType';
-import { addToCart } from '../redux/actionCreator/productAction';
+import {
+  addToCart,
+  removeFromCart,
+} from '../redux/actionCreator/productAction';
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -36,12 +39,14 @@ const ProductCard = ({ product }) => {
         </ul>
       </div>
       <div className="flex gap-2 mt-5">
-        <button
-          onClick={() => dispatch(addToCart(product))}
-          className="bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold"
-        >
-          Add to cart
-        </button>
+        {!pathname.includes('cart') && (
+          <button
+            onClick={() => dispatch(addToCart(product))}
+            className="bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold"
+          >
+            Add to cart
+          </button>
+        )}
 
         {!pathname.includes('cart') && (
           <button
@@ -54,9 +59,7 @@ const ProductCard = ({ product }) => {
         {pathname.includes('cart') && (
           <button
             title="Remove"
-            // onClick={() =>
-            //   dispatch({ type: actionType.REMOVE_FROM_CART, payload: product })
-            // }
+            onClick={() => dispatch(removeFromCart(product))}
             className="flex justify-between px-3 bg-red-500 text-white p-1 rounded-full flex-1"
           >
             <p>Remove</p>
