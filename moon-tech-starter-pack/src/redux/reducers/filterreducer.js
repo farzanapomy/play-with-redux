@@ -1,6 +1,26 @@
-export const initialState = {};
+export const initialState = {
+  filters: {
+    brands: [],
+    stock: false,
+  },
+  keyWord: '',
+};
 
 export const filterReducer = (state = initialState, action) => {
-  
-    return state;
+  switch (action.type) {
+    case 'TOGGLE_BRAND': {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          brands: [...state.filters.brands, action.payload],
+        },
+      };
+    }
+    case 'TOGGLE_STOCK': {
+      return {};
+    }
+    default:
+      return state;
+  }
 };
