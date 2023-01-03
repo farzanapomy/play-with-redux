@@ -22,19 +22,25 @@ const Home = () => {
       <div className="mb-10 flex justify-end gap-5">
         <button
           onClick={() => dispatch(toggleStock())}
-          className={`border px-3 py-2 rounded-full font-semibold ${activeClass} `}
+          className={`border px-3 py-2 rounded-full font-semibold ${
+            stock ? activeClass : null
+          } `}
         >
           In Stock
         </button>
         <button
           onClick={() => dispatch(toggleBrands('amd'))}
-          className={`border px-3 py-2 rounded-full font-semibold`}
+          className={`border px-3 py-2 rounded-full font-semibold ${
+            brands.includes('amd') & activeClass
+          }`}
         >
           AMD
         </button>
         <button
           onClick={() => dispatch(toggleBrands('intel'))}
-          className={`border px-3 py-2 rounded-full font-semibold`}
+          className={`border px-3 py-2 rounded-full font-semibold ${
+            brands.includes('intel') & activeClass
+          }`}
         >
           Intel
         </button>
