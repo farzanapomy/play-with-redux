@@ -11,4 +11,4 @@ export const toggleStock = () => {
   return {
     type: 'TOGGLE_STOCK',
   };
-}
+};

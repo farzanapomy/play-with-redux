@@ -4,7 +4,7 @@ import {
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
-} from "../actionTypes/actionTypes";
+} from '../actionTypes/actionTypes';
 
 export const addProduct = (product) => {
   return {
