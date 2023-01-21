@@ -6,7 +6,7 @@ export const initialState = {
   keyWord: '',
 };
 
-export const filterReducer = (state = initialState, action) => {
+const filterReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'TOGGLE_BRAND': {
       if (state.filters.brands.includes(action.payload)) {
@@ -36,3 +36,5 @@ export const filterReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default filterReducer;

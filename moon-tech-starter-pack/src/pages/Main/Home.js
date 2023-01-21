@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleBrands, toggleStock } from '../../redux/actions/filterAction';
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const filters = useSelector((state) => state.filter.filters);
+  const filters = useSelector((state) => state.filterReducer);
   console.log(filters);
   const { brands, stock } = filters;
 
