@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleBrands, toggleStock } from '../../redux/actions/filterAction';
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const filters = useSelector((state) => state.filterReducer);
-  console.log(filters);
-  const { brands, stock } = filters;
+  // const filters = useSelector((state) => state.filterReducer);
+  // console.log(filters);
+  // const { brands, stock } = filters;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,25 +22,25 @@ const Home = () => {
       <div className="mb-10 flex justify-end gap-5">
         <button
           onClick={() => dispatch(toggleStock())}
-          className={`border px-3 py-2 rounded-full font-semibold ${
-            stock ? activeClass : null
-          } `}
+          // className={`border px-3 py-2 rounded-full font-semibold ${
+          //   stock ? activeClass : null
+          // } `}
         >
           In Stock
         </button>
         <button
           onClick={() => dispatch(toggleBrands('amd'))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
-            brands.includes('amd') & activeClass
-          }`}
+          // className={`border px-3 py-2 rounded-full font-semibold ${
+          //   brands.includes('amd') & activeClass
+          // }`}
         >
           AMD
         </button>
         <button
           onClick={() => dispatch(toggleBrands('intel'))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
-            brands.includes('intel') & activeClass
-          }`}
+          // className={`border px-3 py-2 rounded-full font-semibold ${
+          //   brands.includes('intel') & activeClass
+          // }`}
         >
           Intel
         </button>
